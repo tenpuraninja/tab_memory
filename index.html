@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>tab_memory</title>
+</head>
+<body>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="js/jquery.cookie.js"></script>
+  <script>
+  $(function () {
+    var index = 0;
+
+    if ($.cookie('index')) {
+      index = $.cookie('index');
+      $('#tab li').removeClass('selected').eq(index).addClass('selected');
+      $('article').hide().eq(index).show();
+    }
+
+    $('#tab li').click(function() {
+      if (index != $('#tab li').index(this)) {
+        index = $('#tab li').index(this);
+        $('article').hide().eq(index).fadeIn('fast');
+        $('#tab li').removeClass('selected').eq(index).addClass('selected');
+        $.cookie('index', index, { expires: 1 });
+      }
+    });
+  });
+  </script>
+  <style>
+    article {
+      display: none;
+    }
+    article.selected {
+      display: block;
+    }
+    #tab {
+      border-spacing: 10px 0px;;
+      box-sizing: border-box;
+      text-align: center;
+      width: 98%;
+      margin: 0 auto;
+      box-sizing: border-box;
+      margin-top: 12px;
+    }
+    #tab li {
+      display:inline-block;
+      background: #dcdcdc;
+      padding: 15px;
+      box-sizing: border-box;
+      border-radius: 6px 6px 0 0;
+      color: #7b7b7b;
+      font-size: 23px;
+      cursor: pointer;
+      /* transition: 0.6s; */
+      color:#fff;
+      font-weight: bold;
+    }
+
+    .tab_1 {
+      width: 30%;
+      background: #ed8e5f;
+      margin:0 auto;
+      box-sizing: border-box;
+    }
+    li.tab_1:hover {
+      background: #fe8144!important;
+    }
+    #tab li.selected.tab_1 {
+      background: #fe8144;
+      color: #fff;
+      border-top: 10px solid #fe8144;
+    }
+    .box1 {
+      width: 98%;
+      margin:0 auto;
+      box-sizing: border-box;
+      border: 3px solid #fe8144;
+    }
+
+    .tab_2 {
+      width: 30%;
+      margin:0 auto;
+      box-sizing: border-box;
+    }
+    li.tab_2:hover {
+      background: #fd5776!important;
+    }
+    #tab li.selected.tab_2 {
+      background: #fd5776;
+      color: #fff;
+      border-top: 10px solid #fd5776;
+    }
+    .box2 {
+      width: 98%;
+      margin:0 auto;
+      box-sizing: border-box;
+      border: 3px solid #fd5776;
+    }
+
+    .tab_3 {
+      width: 30%;
+      background: #5eccb9;
+      margin:0 auto;
+      box-sizing: border-box;
+    }
+    li.tab_3:hover {
+      background: #2ab29b!important;
+    }
+    #tab li.selected.tab_3 {
+      background: #2ab29b;
+      color: #fff;
+      border-top: 10px solid #2ab29b;
+    }
+    .box3 {
+      width: 98%;
+      margin:0 auto;
+      box-sizing: border-box;
+      border: 3px solid #2ab29b;
+    }
+
+  </style>
+
+<div class="tab_cont">
+  <ul id="tab">
+    <li class="selected tab_1">1</li>
+    <li class="tab_2">2</li>
+    <li class="tab_3">3</li>
+  </ul>
+  <div id="tab_box">
+    <article class="selected box1">
+      1
+    </article>
+    <article class="box2">
+      2
+    </article>
+    <article class="box3">
+      3
+    </article>
+  </div>
+</div>
+
+
+</body>
+</html>
